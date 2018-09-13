@@ -1,0 +1,61 @@
+// Spacing
+$sizeUnit: rem;
+$marginKey: 'm';
+$paddingKey: 'p';
+$separator: '-';
+$sizes: (
+  ('none', 0),
+  ('xxs', 0.125),
+  ('xs', 0.25),
+  ('sm', 0.5),
+  ('md', 1),
+  ('lg', 2),
+  ('xl', 4),
+  ('xxl', 8),
+);
+$positions: (
+  ('t', 'top'),
+  ('r', 'right'),
+  ('b', 'bottom'),
+  ('l', 'left')
+);
+
+@function sizeValue($key, $value) {
+  @return if($key == 'none', 0, $value + $sizeUnit);
+}
+
+@each $size in $sizes {
+  $sizeKey: nth($size, 1);
+  $sizeValue: nth($size, 2);
+  .#{$marginKey}#{$separator}#{$sizeKey} {
+    margin: sizeValue($sizeKey, $sizeValue) !important;
+  }
+  .#{$paddingKey}#{$separator}#{$sizeKey} {
+    padding: sizeValue($sizeKey, $sizeValue) !important;
+  }
+  @each $position in $positions {
+    $posKey: nth($position, 1);
+    $posValue: nth($position, 2);
+    .#{$marginKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+      margin-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+    }
+    .#{$paddingKey}#{$separator}#{$posKey}#{$separator}#{$sizeKey} {
+      padding-#{$posValue}: sizeValue($sizeKey, $sizeValue) !important;
+    }
+  }
+}
+
+// Gradients
+@mixin linear-gradient($color-one,$color-two,$degrees: 0deg) {
+  background: -moz-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, $color-one), color-stop(100%, $color-two)); /* safari4+,chrome */
+  background: -webkit-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient($degrees, $color-one 0%, $color-two 100%); /* ie10+ */
+  background: linear-gradient($degrees, $color-one 0%, $color-two 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color-one', endColorstr='$color-two',GradientType=1 ); /* ie6-9 */
+}
+
+@mixin auto-gradient($color, $difference: 5%, $degrees: 0deg) {
+  @include linear-gradient(lighten($color, $difference), darken($color, $difference), $degrees);
+}
