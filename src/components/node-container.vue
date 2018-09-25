@@ -16,8 +16,7 @@
 
 <script lang="ts">
     import {Prop, Component, Vue} from "vue-property-decorator";
-    import {INode} from "../models/nodes/inode";
-    import {Point} from "../models/rendering/point";
+    import {INode} from "@/models/nodes/inode";
     import * as interact from "interactjs";
 
     @Component
@@ -146,7 +145,7 @@
         {
             this.refreshPosition();
 
-            const dragConfig = <any>{
+            const dragConfig: any = {
                 onmove: this.dragMoveListener/*,
                 restrict: {
                     restriction: this.$parent.$refs.diagramContainer

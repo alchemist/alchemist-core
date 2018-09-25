@@ -40,11 +40,11 @@ export class DefaultGenerationManager implements IGenerationManager
 
     public async generateSpecificForProject(generator: IProjectGenerator, project: IProject): Promise<IGeneratedCode>
     {
-        return Promise.resolve();
+        return Promise.resolve(null);
     }
 
     public generateForProject(generator: IProjectGenerator, project: IProject): Promise<Array<IGeneratedCode>> {
-        return Promise.resolve();
+        return Promise.resolve(null);
     }
 
     public async outputCode(content: string, location: string,  overwriteExisting = false)

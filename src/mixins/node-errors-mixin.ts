@@ -1,5 +1,5 @@
 import {RulesetOptions, ValidateWith} from "treacherous-vue";
-import {createNodeRuleset} from "@/nodegen-shared/components/helpers/node-ruleset-helpers";
+import {createNodeRuleset} from "@/components/helpers/node-ruleset-helpers";
 
 const defaultOptions: RulesetOptions = {
     validateOnStart: true,
