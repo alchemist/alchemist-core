@@ -1,7 +1,6 @@
 export * from "./entry-point";
 export * from "./components/helpers/node-ruleset-helpers";
 export * from "./factories/inode-factory";
-export * from "./generators/default-generation-manager";
 export * from "./generators/generated-code";
 export * from "./generators/igenerated-code";
 export * from "./generators/igeneration-manager";

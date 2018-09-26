@@ -1,4 +1,4 @@
-import {RulesetOptions, ValidateWith} from "treacherous-vue";
+import {RulesetOptions, ValidateWith} from "@treacherous/vue";
 import {createNodeRuleset} from "@/components/helpers/node-ruleset-helpers";
 
 const defaultOptions: RulesetOptions = {
@@ -18,4 +18,4 @@ export function ValidateNode(nodeType: any, options: RulesetOptions = defaultOpt
     };
 
     return validationMixin;
-};
+}

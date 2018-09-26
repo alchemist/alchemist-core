@@ -1,5 +1,5 @@
-import {createRulesetFor} from "treacherous-decorators";
-import {createRuleset} from "treacherous";
+import {createRulesetFor} from "@treacherous/decorators";
+import {createRuleset} from "@treacherous/core";
 
 export const createNodeRuleset = (node: any) => {
     const nodeRuleset = createRulesetFor(node);
