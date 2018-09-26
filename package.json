@@ -1,7 +1,7 @@
 {
   "name": "@alchemist-editor/core",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/alchemist.core.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "barrel": "barrelsby -d src",
