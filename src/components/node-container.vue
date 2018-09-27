@@ -20,7 +20,7 @@
     import * as interact from "interactjs";
 
     @Component
-    export default class extends Vue
+    export class NodeContainerComponent extends Vue
     {
         public name = "node-container";
 

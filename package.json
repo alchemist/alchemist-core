@@ -1,10 +1,10 @@
 {
   "name": "@alchemist-editor/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/alchemist.core.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "barrel": "barrelsby -d src",
+    "barrel": "barrelsby -c barrel.config.json",
     "build": "vue-cli-service build --target lib --name alchemist.core src/index.ts"
   },
   "dependencies": {

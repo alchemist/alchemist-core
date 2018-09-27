@@ -1,3 +1,4 @@
+export * from "./component.exports";
 export * from "./entry-point";
 export * from "./components/helpers/node-ruleset-helpers";
 export * from "./factories/inode-factory";
@@ -25,4 +26,3 @@ export * from "./registries/project-generator-registry";
 export * from "./stores/modules/project/project-getters";
 export * from "./stores/modules/project/project-mutations";
 export * from "./stores/modules/project/project-state";
-export * from "./components/node-container.vue";
