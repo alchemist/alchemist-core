@@ -10,4 +10,5 @@ module.exports = config => {
     config.externals["@treacherous/decorators"] = "@treacherous/decorators";
     config.externals["uuid"] = "uuid";
     config.externals["interactjs"] = "interactjs";
+    config.externals["tslib"] = "tslib";
 };

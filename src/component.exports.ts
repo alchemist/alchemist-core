@@ -1,1 +1,1 @@
-export * from "./components/node-container.vue"
+export { default as NodeContainerComponent } from "./components/node-container.vue"

@@ -1,6 +1,6 @@
 {
   "name": "@alchemist-editor/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/alchemist.core.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,7 +17,8 @@
     "uuid": "^3.3.2",
     "@treacherous/core": "^0.17.6",
     "@treacherous/vue": "^0.3.2",
-    "@treacherous/decorators": "^0.2.3"
+    "@treacherous/decorators": "^0.2.3",
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@types/vue": "^2.0.0",
