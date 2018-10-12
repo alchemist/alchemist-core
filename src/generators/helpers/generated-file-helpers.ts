@@ -1,4 +1,4 @@
-import {INodeGenerator} from "@/generators/inode-generator";
+import {INodeGenerator} from "../inode-generator";
 
 export function addGeneratedFileHeader(generator: INodeGenerator) {
     return `

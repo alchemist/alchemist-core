@@ -1,34 +1,35 @@
 {
   "name": "@alchemist-editor/core",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "dist/alchemist.core.common.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "serve": "vue-cli-service serve",
     "barrel": "barrelsby -c barrel.config.json",
     "build": "vue-cli-service build --target lib --name alchemist.core src/index.ts"
   },
   "dependencies": {
+    "@treacherous/core": "^0.17.6",
+    "@treacherous/decorators": "^0.2.3",
+    "@treacherous/vue": "^0.3.2",
+    "interactjs": "^1.3.4",
+    "tslib": "^1.9.3",
+    "uuid": "^3.3.2",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
-    "vue-property-decorator": "^7.1.1",
+    "vue-property-decorator": "^7.2.0",
     "vuex": "^3.0.1",
-    "vuex-class": "^0.3.1",
-    "interactjs": "^1.3.4",
-    "uuid": "^3.3.2",
-    "@treacherous/core": "^0.17.6",
-    "@treacherous/vue": "^0.3.2",
-    "@treacherous/decorators": "^0.2.3",
-    "tslib": "^1.9.3"
+    "vuex-class": "^0.3.1"
   },
   "devDependencies": {
-    "@types/vue": "^2.0.0",
     "@types/uuid": "^3.4.4",
-    "@vue/cli-plugin-typescript": "^3.0.4",
-    "@vue/cli-service": "^3.0.4",
+    "@types/vue": "^2.0.0",
+    "@vue/cli-plugin-typescript": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "barrelsby": "^1.0.2",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
-    "typescript": "^3.0.3",
+    "typescript": "^3.1.3",
     "vue-template-compiler": "^2.5.17",
-    "barrelsby": "^1.0.2"
+    "ts-loader": "^5.2.1"
   }
 }

@@ -1,5 +1,5 @@
-import {INodeGenerator} from "@/generators/inode-generator";
-import {INode} from "@/models/nodes/inode";
+import {INodeGenerator} from "../generators/inode-generator";
+import {INode} from "../models/nodes/inode";
 
 export class NodeGeneratorRegistry
 {

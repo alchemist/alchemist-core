@@ -1,5 +1,5 @@
 import Vue from "vue";
-import {INodeFactory} from "@/factories/inode-factory";
+import {INodeFactory} from "../factories/inode-factory";
 
 export class NodeEntry
 {

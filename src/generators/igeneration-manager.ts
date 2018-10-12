@@ -1,9 +1,9 @@
-import {IProject} from "@/models/project/iproject";
-import {INodeGenerator} from "@/generators/inode-generator";
-import {INode} from "@/models/nodes/inode";
-import {INodeGroup} from "@/models/project/inode-group";
-import {IGeneratedCode} from "@/generators/igenerated-code";
-import {IProjectGenerator} from "@/generators/iproject-generator";
+import {IProject} from "../models/project/iproject";
+import {INodeGenerator} from "./inode-generator";
+import {INode} from "../models/nodes/inode";
+import {INodeGroup} from "../models/project/inode-group";
+import {IGeneratedCode} from "./igenerated-code";
+import {IProjectGenerator} from "./iproject-generator";
 
 export interface IGenerationManager
 {

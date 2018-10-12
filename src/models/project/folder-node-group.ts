@@ -1,6 +1,6 @@
-import {INodeGroup} from "@/models/project/inode-group";
-import {WorkspaceConfig} from "@/models/project/workspace-config";
-import {INode} from "@/models/nodes/inode";
+import {INodeGroup} from "./inode-group";
+import {WorkspaceConfig} from "./workspace-config";
+import {INode} from "../nodes/inode";
 
 export class FolderNodeGroup implements INodeGroup
 {

@@ -1,4 +1,4 @@
-import {IProject} from "@/models/project/iproject";
+import {IProject} from "../models/project/iproject";
 
 export interface IProjectGenerator
 {

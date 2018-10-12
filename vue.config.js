@@ -1,6 +1,8 @@
-const webpackExtension = require("./webpack.extension");
+const {configureExternals, configureTsLoader} = require("./webpack.extension");
 
 module.exports = {
-    configureWebpack: webpackExtension,
-    css: { extract: false }
+    chainWebpack: chain => { configureTsLoader(chain); },
+    configureWebpack: config => { configureExternals(config); },
+    css: { extract: false },
+    parallel: false
 };

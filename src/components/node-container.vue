@@ -16,8 +16,9 @@
 
 <script lang="ts">
     import {Prop, Component, Vue} from "vue-property-decorator";
-    import {INode} from "@/models/nodes/inode";
+    import {INode} from "../models/nodes/inode";
     import * as interact from "interactjs";
+    import {Mutation, State} from "vuex-class";
 
     @Component
     export default class extends Vue
@@ -27,16 +28,22 @@
         @Prop()
         public node: INode;
 
+        @Mutation('selectNode')
+        public changeSelectedNode;
+
+        @State(state => state.editor.selectedNode)
+        public selectedNode;
+
          public updatePosition(newPosition) {
             this.$emit("update:position", newPosition);
         }
 
         public selectNode() {
-            this.$store.commit('selectNode', this.node);
+            this.changeSelectedNode(this.node);
         }
 
         public get isSelectedNode () {
-            return this.$store.state.editor.selectedNode === this.node;
+            return this.selectedNode === this.node;
         }
 
         public refreshPosition()
@@ -152,7 +159,8 @@
                 },*/
             };
             const handle = <HTMLElement>this.$refs.headerElement;
-            interact(handle)
+            const startInteract: any = interact;
+            startInteract(handle)
                 .draggable(dragConfig);
         }
     }

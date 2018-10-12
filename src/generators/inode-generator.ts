@@ -1,6 +1,6 @@
-import {INode} from "@/models/nodes/inode";
-import {INodeGroup} from "@/models/project/inode-group";
-import {IProject} from "@/models/project/iproject";
+import {INode} from "../models/nodes/inode";
+import {INodeGroup} from "../models/project/inode-group";
+import {IProject} from "../models/project/iproject";
 
 export interface INodeGenerator
 {

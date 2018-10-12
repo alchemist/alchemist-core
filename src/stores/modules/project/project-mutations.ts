@@ -1,5 +1,5 @@
-import {IProject} from "@/models/project/iproject";
-import {ProjectState} from "@/stores/modules/project/project-state";
+import {IProject} from "../../..//models/project/iproject";
+import {ProjectState} from "./project-state";
 
 export class ProjectMutations
 {

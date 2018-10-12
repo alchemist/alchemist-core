@@ -1,4 +1,4 @@
-import {Point} from "@/models/rendering/point";
+import {Point} from "../rendering/point";
 
 export interface IWorkspaceConfig
 {

@@ -1,5 +1,5 @@
-import {IProjectGenerator} from "@/generators/iproject-generator";
-import {IProject} from "@/models/project/iproject";
+import {IProjectGenerator} from "../generators/iproject-generator";
+import {IProject} from "../models/project/iproject";
 
 export class ProjectGeneratorRegistry
 {

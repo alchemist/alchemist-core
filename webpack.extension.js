@@ -1,7 +1,18 @@
-const path = require("path");
+const configureTsLoader = chain => {
+    chain.module.rules.delete("ts");
+    chain.module.rules.delete("tsx");
 
-module.exports = config => {
+    chain.module
+        .rule('ts')
+        .test(/\.tsx?$/)
+        .use("ts-loader")
+        .loader("ts-loader")
+        .options({
+            appendTsSuffixTo: ['\\.vue$']
+        });
+};
 
+const configureExternals = config => {
     if(!config.externals)
     { config.externals = {}; }
 
@@ -11,4 +22,10 @@ module.exports = config => {
     config.externals["uuid"] = "uuid";
     config.externals["interactjs"] = "interactjs";
     config.externals["tslib"] = "tslib";
+    config.externals["vue-class-component"] = "vue-class-component";
+    config.externals["vue-property-decorator"] = "vue-property-decorator";
+    config.externals["vuex"] = "vuex";
+    config.externals["vuex-class"] = "vuex-class";
 };
+
+module.exports = { configureTsLoader, configureExternals };

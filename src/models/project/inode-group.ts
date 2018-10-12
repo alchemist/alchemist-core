@@ -1,5 +1,5 @@
 import {INode} from "../nodes/inode";
-import {IWorkspaceConfig} from "@/models/project/iworkspace-config";
+import {IWorkspaceConfig} from "./iworkspace-config";
 
 export interface INodeGroup
 {
