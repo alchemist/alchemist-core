@@ -1,5 +1,5 @@
 {
-  "name": "@alchemist-editor/core",
+  "name": "@alchemist/core",
   "version": "0.1.4",
   "main": "dist/alchemist.core.common.js",
   "types": "dist/index.d.ts",
@@ -7,6 +7,11 @@
     "barrel": "barrelsby -c barrel.config.json",
     "build": "vue-cli-service build --target lib --name alchemist.core src/index.ts"
   },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "readme.md"
+  ],
   "dependencies": {
     "@treacherous/core": "^0.17.6",
     "@treacherous/decorators": "^0.2.3",
