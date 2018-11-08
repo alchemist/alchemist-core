@@ -43,7 +43,8 @@
         }
 
         public get isSelectedNode () {
-            return this.selectedNode === this.node;
+            if(!this.selectedNode) { return false; }
+            return this.selectedNode.id === this.node.id;
         }
 
         public refreshPosition()
