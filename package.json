@@ -1,14 +1,16 @@
 {
   "name": "@alchemist/core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/alchemist.core.common.js",
   "types": "dist/index.d.ts",
+  "repository": "https://github.com/alchemist/alchemist-core",
   "scripts": {
     "barrel": "barrelsby -c barrel.config.json",
     "build": "vue-cli-service build --target lib --name alchemist.core src/index.ts"
   },
   "files": [
     "dist/**/*",
+    "src/**/*.scss",
     "LICENSE",
     "readme.md"
   ],
