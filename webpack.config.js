@@ -1,7 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -11,8 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
         filename: 'alchemist.core.common.js',
-        library: 'alchemist.core',
-        libraryTarget: 'umd'
+        libraryTarget: "commonjs"
     },
     module: {
         rules: [
@@ -70,6 +67,9 @@ module.exports = {
         "vuex",
         "vuex-class"
     ],
+    optimization: {
+        minimize: false
+    },
     plugins: [
         new VueLoaderPlugin()
     ]
