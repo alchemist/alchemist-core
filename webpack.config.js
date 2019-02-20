@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
         filename: 'alchemist.core.common.js',
-        libraryTarget: "commonjs"
+        libraryTarget: "commonjs2"
     },
     module: {
         rules: [
