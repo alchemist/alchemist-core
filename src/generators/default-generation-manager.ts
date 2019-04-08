@@ -19,16 +19,15 @@ export class DefaultGenerationManager implements IGenerationManager
         const rawCodeGeneration = await generator.generate(node, group, project);
         const fileLocation = generator.computeFileLocation(node, group, project);
         let generatedCode = new GeneratedCode(rawCodeGeneration, fileLocation, node, { replaceExisting: generator.replaceExisting });
-        await this.ProcessCode(generatedCode);
+        await this.processCode(generatedCode);
         return generatedCode;
     }
 
-    private async ProcessCode(generatedCode: IGeneratedCode) : Promise<any>
+    private async processCode(generatedCode: IGeneratedCode) : Promise<any>
     {
         const applicableProcessors = codeProcessorRegistry.getProcessorsFor(generatedCode);
-        applicableProcessors.forEach(async x => {
-            generatedCode = await x.process(generatedCode);
-        });
+        for(const processor of applicableProcessors)
+        { await processor.process(generatedCode); }
     }
 
     public async generateForNode(node: INode, group: INodeGroup, project: IProject): Promise<Array<IGeneratedCode>> {
@@ -73,15 +72,20 @@ export class DefaultGenerationManager implements IGenerationManager
 
     public async outputCode(generatedCode: IGeneratedCode, overwriteExisting = false)
     {
+        await this.processCode(generatedCode);
+        await this.writeFile(generatedCode.code, generatedCode.fileLocation, overwriteExisting);
+    }
+
+    public async writeFile(content: string, location: string, overwriteExisting = false)
+    {
         if(overwriteExisting === false)
         {
-            if(this.fileSystem.fileExists(generatedCode.fileLocation))
+            if(await this.fileSystem.fileExists(location))
             { return; }
         }
 
-        await this.ProcessCode(generatedCode);
-        await this.fileSystem.ensureDirectory(generatedCode.fileLocation);
-        await this.fileSystem.writeFile(generatedCode.fileLocation, generatedCode.code);
+        await this.fileSystem.ensureDirectory(location);
+        await this.fileSystem.writeFile(location, content);
     }
 
     public async generate(project: IProject): Promise<void> {
@@ -95,7 +99,7 @@ export class DefaultGenerationManager implements IGenerationManager
 
         const generatedProjectFiles = await this.generateForProject(project);
         for(const generatedProjectFile of generatedProjectFiles)
-        { await this.outputCode(generatedProjectFile, generatedProjectFile.metadata.replaceExisting); }
+        { await this.writeFile(generatedProjectFile.code, generatedProjectFile.fileLocation, generatedProjectFile.metadata.replaceExisting); }
 
         return Promise.resolve();
     }
