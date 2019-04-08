@@ -7,5 +7,7 @@ export interface IProject
     version: string;
     outputDirectory: string;
 
+    metadata: { [key: string]: any };
+
     nodeGroups: Array<INodeGroup>;
 }

@@ -9,6 +9,7 @@ import {IGeneratedCode} from "./igenerated-code";
 import {GeneratedCode} from "./generated-code";
 import {codeProcessorRegistry} from "../registries/code-processor-registry";
 import {nodeGeneratorRegistry} from "../registries/node-generator-registry";
+import {projectGeneratorRegistry} from "../registries/project-generator-registry";
 
 export class DefaultGenerationManager implements IGenerationManager
 {
@@ -17,7 +18,7 @@ export class DefaultGenerationManager implements IGenerationManager
     public async generateSpecificForNode(generator: INodeGenerator, node: INode, group: INodeGroup, project: IProject): Promise<IGeneratedCode> {
         const rawCodeGeneration = await generator.generate(node, group, project);
         const fileLocation = generator.computeFileLocation(node, group, project);
-        let generatedCode = new GeneratedCode(rawCodeGeneration, fileLocation);
+        let generatedCode = new GeneratedCode(rawCodeGeneration, fileLocation, node, { replaceExisting: generator.replaceExisting });
         await this.ProcessCode(generatedCode);
         return generatedCode;
     }
@@ -33,8 +34,8 @@ export class DefaultGenerationManager implements IGenerationManager
     public async generateForNode(node: INode, group: INodeGroup, project: IProject): Promise<Array<IGeneratedCode>> {
         const generators = nodeGeneratorRegistry.getGeneratorsFor(node);
         if(!generators || generators.length == 0) {
-            console.log(`Cannot find generators for ${node.type.id}`);
-            return;
+            console.log(`Cannot find generators for Node:${node.type.id}`);
+            return [];
         }
 
         const allGeneratedCode = [];
@@ -48,11 +49,26 @@ export class DefaultGenerationManager implements IGenerationManager
 
     public async generateSpecificForProject(generator: IProjectGenerator, project: IProject): Promise<IGeneratedCode>
     {
-        return Promise.resolve(null);
+        const rawCodeGeneration = await generator.generate(project);
+        const fileLocation = generator.computeFileLocation(project);
+        let generatedCode = new GeneratedCode(rawCodeGeneration, fileLocation, null, { replaceExisting: generator.replaceExisting });
+        return generatedCode;
     }
 
-    public generateForProject(generator: IProjectGenerator, project: IProject): Promise<Array<IGeneratedCode>> {
-        return Promise.resolve(null);
+    public async generateForProject(project: IProject): Promise<Array<IGeneratedCode>> {
+        const generators = projectGeneratorRegistry.getGeneratorsFor(project);
+        if(!generators || generators.length == 0) {
+            console.log(`Cannot find generators for Project:${project.projectType}`);
+            return [];
+        }
+
+        const allGeneratedCode = [];
+        for (const generator of generators) {
+            const generatedCode = await this.generateSpecificForProject(generator, project);
+            allGeneratedCode.push(generatedCode);
+        }
+
+        return allGeneratedCode;
     }
 
     public async outputCode(generatedCode: IGeneratedCode, overwriteExisting = false)
@@ -68,16 +84,19 @@ export class DefaultGenerationManager implements IGenerationManager
         await this.fileSystem.writeFile(generatedCode.fileLocation, generatedCode.code);
     }
 
-    public async generateAll(project: IProject): Promise<void> {
+    public async generate(project: IProject): Promise<void> {
         for (const nodeGroup of project.nodeGroups) {
             for (const node of nodeGroup.nodes) {
-                const generators = nodeGeneratorRegistry.getGeneratorsFor(node);
-                for (const generator of generators) {
-                    const generatedCode = await this.generateSpecificForNode(generator, node, nodeGroup, project);
-                    await this.outputCode(generatedCode, generator.replaceExisting);
-                }
+                const generatedCodeFiles = await this.generateForNode(node, nodeGroup, project);
+                for(const generatedCode of generatedCodeFiles)
+                { await this.outputCode(generatedCode, generatedCode.metadata.replaceExisting); }
             }
         }
+
+        const generatedProjectFiles = await this.generateForProject(project);
+        for(const generatedProjectFile of generatedProjectFiles)
+        { await this.outputCode(generatedProjectFile, generatedProjectFile.metadata.replaceExisting); }
+
         return Promise.resolve();
     }
 }

@@ -5,4 +5,5 @@ export interface IGeneratedCode
     originatingNode: INode;
     code: string;
     fileLocation: string;
+    metadata: { [key: string]: any }
 }
