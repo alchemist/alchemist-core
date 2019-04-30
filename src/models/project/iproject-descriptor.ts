@@ -10,4 +10,5 @@ export interface IProjectDescriptor
     description: string;
 
     compatibleNodeTypeIds: string[];
+    compatibleNodeGroupTypeIds: string[];
 }

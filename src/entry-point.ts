@@ -3,6 +3,7 @@ import {NodeGeneratorRegistry} from "./registries/node-generator-registry";
 import {CodeProcessorRegistry} from "./registries/code-processor-registry";
 import {ProjectRegistry} from "./registries/project-registry";
 import {ProjectGeneratorRegistry} from "./registries/project-generator-registry";
+import {NodeGroupRegistry} from "./registries/node-group-registry";
 
 export interface Paths
 {
@@ -14,6 +15,7 @@ export interface PluginContext
 {
     nodeRegistry: NodeRegistry;
     nodeGeneratorRegistry: NodeGeneratorRegistry;
+    nodeGroupRegistry: NodeGroupRegistry;
     codeProcessorRegistry: CodeProcessorRegistry;
     projectRegistry: ProjectRegistry;
     projectGeneratorRegistry: ProjectGeneratorRegistry;
