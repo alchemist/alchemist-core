@@ -1,5 +1,5 @@
 <template>
-    <div class="node-container card" @click.left.stop="selectNode" ref="nodeContainer" :node-type="node.type.id" :class="{ 'selected-node': isSelectedNode }">
+    <div :id="node.id" class="node-container card" @click.left.stop="selectNode" ref="nodeContainer" :node-type="node.type.id" :class="{ 'selected-node': isSelectedNode }">
         <span class="component-type tag">{{node.type.name}}</span>
         <header class="node-header card-header p-sm p-t-lg" ref="headerElement">
             <slot name="header">
