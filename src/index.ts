@@ -32,6 +32,8 @@ export * from "./models/project/project";
 export * from "./models/project/workspace-config";
 export * from "./models/rendering/connector";
 export * from "./models/rendering/point";
+export * from "./projects/iproject-serializer";
+export * from "./projects/project-entry";
 export * from "./registries/code-processor-registry";
 export * from "./registries/node-generator-registry";
 export * from "./registries/node-group-registry";

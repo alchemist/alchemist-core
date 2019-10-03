@@ -38,6 +38,10 @@ export class NodeRegistry
         if(!category) { return this.nodes; }
         return this.nodes.filter(x => x.category == category);
     };
+
+    public getNode = (nodeTypeId: string): NodeEntry => {
+        return this.nodes.find(x => x.nodeTypeId == nodeTypeId);
+    }
 }
 
 export const nodeRegistry = new NodeRegistry();

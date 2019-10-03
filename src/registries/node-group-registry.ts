@@ -29,6 +29,10 @@ export class NodeGroupRegistry
     public getNodeGroups = (): Array<NodeGroupEntry> => {
         return this.nodeGroups;
     };
+
+    public getNodeGroup = (nodeGroupTypeId: string) => {
+        return this.nodeGroups.find(x => x.nodeGroupTypeId == nodeGroupTypeId);
+    }
 }
 
 export const nodeGroupRegistry = new NodeGroupRegistry();

@@ -10,8 +10,7 @@ export class FolderNodeGroup implements INodeGroup
     public get displayName(): string
     { return this.name; }
 
-    public get nodeGroupTypeId()
-    { return FolderNodeGroup.NodeGroupType.id; }
+    public nodeGroupTypeId = FolderNodeGroup.NodeGroupType.id;
 
     public constructor(public name = "", public workspaceConfig = new WorkspaceConfig(), public nodes: Array<INode> = []){}
 }

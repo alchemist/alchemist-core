@@ -1,10 +1,4 @@
-import {IProjectFactory} from "../factories/iproject-factory";
-import {IProjectDescriptor} from "../models/project/iproject-descriptor";
-
-export class ProjectEntry
-{
-    public constructor(public projectDescriptor: IProjectDescriptor, public projectFactory: IProjectFactory){}
-}
+import {ProjectEntry} from "../projects/project-entry";
 
 export class ProjectRegistry
 {
