@@ -32,7 +32,7 @@
     "@types/uuid": "^8.0.0",
     "@types/vue": "^2.0.0",
     "barrelsby": "^2.2.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "css-loader": "^3.6.0",
     "sass-loader": "^9.0.2",
     "ts-loader": "^8.0.1",
